@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top 10 Sitios Turísticos de El Salvador</title>
+  <style>
+    /* VARIABLES DE COLOR */
+    :root {
+      --color-primary: #E73F1E;    /* Rojo Cárdenas / Fuego */
+      --color-secondary: #FB6C00;  /* Naranja Vibrante */
+      --color-accent: #F9B637;     /* Amarillo Cálido */
+      --color-light: #FFDD9C;      /* Crema Suave */
+      --color-dark: #2B1810;       /* Texto Oscuro */
+      --color-white: #FFFFFF;
+    }
+
+    /* RESET BÁSICO */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--color-dark);
+      background-color: #FAF8F5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER & NAVEGACIÓN */
+    header {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      color: var(--color-white);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    header nav a {
+      color: var(--color-light);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover {
+      color: var(--color-white);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(rgba(231, 63, 30, 0.85), rgba(251, 108, 0, 0.85)), 
+                  url('https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color: var(--color-white);
+      text-align: center;
+      padding: 5rem 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      color: var(--color-light);
+    }
+
+    .btn-cta {
+      display: inline-block;
+      background-color: var(--color-accent);
+      color: var(--color-dark);
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn-cta:hover {
+      background-color: var(--color-light);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    }
+
+    /* SECCIÓN PRINCIPAL: TOP 10 */
+    .container {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      color: var(--color-primary);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background-color: var(--color-accent);
+      margin: 0.5rem auto 0 auto;
+      border-radius: 2px;
+    }
+
+    .grid-destinos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    /* TARJETAS DE DESTINOS */
+    .card {
+      background-color: var(--color-white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 4px solid var(--color-secondary);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(231, 63, 30, 0.2);
+    }
+
+    .card-header {
+      position: relative;
+      height: 200px;
+      background-color: #ddd;
+    }
+
+    .card-header img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      font-weight: bold;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .card-body {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-tag {
+      align-self: flex-start;
+      background-color: var(--color-light);
+      color: var(--color-dark);
+      padding: 0.25rem 0.75rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--color-dark);
+      color: var(--color-light);
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / BARRA DE NAVEGACIÓN -->
+  <header>
+    <div class="logo">🇸🇻 El Salvador Travel</div>
+    <nav>
+      <a href="#destinos">Top 10 Destinos</a>
+    </nav>
+  </header>
+
+  <!-- SECCIÓN HERO -->
+  <section class="hero">
+    <h1>Descubre las Maravillas de El Salvador</h1>
+    <p>Playas de clase mundial, volcanes imponentes y pueblos mágicos te esperan en el pulgarcito de América.</p>
+    <a href="#destinos" class="btn-cta">Explorar la Lista</a>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL: TOP 10 -->
+  <main class="container" id="destinos">
+    <h2 class="section-title">Top 10 Sitios Turísticos</h2>
+    
+    <div class="grid-destinos">
+
+      <!-- 1. El Tunco -->
+      <article class="card">
+        <div class="card-header">
+          <span class="card-badge">#1</span>
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Playa El Tunco">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Playa El Tunco</h3>
+            <p class="card-text">Famosa a nivel internacional por sus olas perfectas para el surf, su vibrante vida nocturna y sunsets inolvidables.</p>
+          </div>
+          <span class="card-tag">Surf y Vida Nocturna</span>
+        </div>
+      </article>
+
+      <!-- 2. Volcán de Santa Ana -->
+      <article class="card">
+        <div class="card-header">
+          <span class="card-badge">#2</span>
+          <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80" alt="Volcán Ilamatepec">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Volcán de Santa Ana (Ilamatepec)</h3>
+            <p class="card-text">El volcán más alto del país ofrece una caminata espectacular con una impresionante laguna de azufre verde turquesa en su cráter.</p>
+          </div>
+          <span class="card-tag">Senderismo y Aventura</span>
+        </div>
+      </article>
+
+      <!-- 3. Lago de Coatepeque -->
+      <article class="card">
+        <div class="card-header">
+          <span class="card-badge">#3</span>
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80" alt="Lago de Coatepeque">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Lago de Coatepeque</h3>
+            <p class="card-text">Un majestuoso lago de origen volcánico rodeado de montañas, ideal para deportes acuáticos y disfrutar de gastronomía local.</p>
+          </div>
+          <span class="card-tag">Naturaleza y Relax</span>
+        </div>
+      </article>
+
+      <!-- 4. Ruta de las Flores -->
+      <article class="card">
+        <div class="card-header">
+          <span class="card-badge">#4</span>
+          <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=600&q=80" alt="Ruta de las Flores">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Ruta de las Flores</h3>
+            <p class="card-text">Un recorrido por coloridos pueblos pintorescos (Juayúa, Apaneca, Ataco) llenos de cultura, arte, café de altura y gastronomía.</p>
+          </div>
+          <span class="card-tag">Cultura y Gastronomía</span>
+        </div>
+      </article>
+
+      <!-- 5. Joya de Cerén -->
+      <article class="card">
+        <div class="card-header">
+          <span class="card-badge">#5</span>
+          <img src="https://images.unsplash.com/photo-1599946347371-68eb71b16afc?auto=format&fit=crop&w=600&q=80" alt="Joya de Cerén">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Joya de Cerén</h3>
+            <p class="card-text">Patrimonio de la Humanidad por la UNESCO. Conocida como la "Pompeya de América", muestra la vida cotidiana maya conservada bajo ceniza.</p>
+          </div>
+          <span class="card-tag">Historia y Arqueología</span>
+        </div>
+      </article>
+
+      <!-- 6. Parque Nacional El Boquerón -->
+      <article class="card">
+        <div class="card-header">
+          <span class="card-badge">#6</span>
+          <img src="https://images.unsplash.com/photo-1511497584788-876761c11969?auto=format&fit=crop&w=600&q=80" alt="El Boquerón">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Parque Nacional El Boquerón</h3>
+            <p class="card-text">Ubicado en el volcán de San Salvador, ofrece un clima fresco, senderos naturales y una vista cercana al cráter gigante.</p>
+          </div>
+          <span class="card-tag">Ecoturismo</span>
+        </div>
+      </article>
+
+      <!-- 7. Suchitoto -->
+      <article class="card">
+        <div class="card-header">
+          <span class="card-badge">#7</span>
+          <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=600&q=80" alt="Suchitoto">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Suchitoto</h3>
+            <p class="card-text">Ciudad colonial reconocida como la capital cultural de El Salvador, con calles empedradas y una vista espectacular al Lago Suchitlán.</p>
+          </div>
+          <span class="card-tag">Pueblo Colonial</span>
+        </div>
+      </article>
+
+      <!-- 8. Puerta del Diablo -->
+      <article class="card">
+        <div class="card-header">
+          <span class="card-badge">#8</span>
+          <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&q=80" alt="Puerta del Diablo">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">La Puerta del Diablo</h3>
+            <p class="card-text">Formación rocosa tallada por la naturaleza que ofrece un mirador panorámico increíble hacia la costa y la villa de Panchimalco.</p>
+          </div>
+          <span class="card-tag">Mirador y Aventura</span>
+        </div>
+      </article>
+
+      <!-- 9. Bahía de Jiquilisco -->
+      <article class="card">
+        <div class="card-header">
+          <span class="card-badge">#9</span>
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80" alt="Bahía de Jiquilisco">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Bahía de Jiquilisco</h3>
+            <p class="card-text">Extenso ecosistema de manglares, refugio de aves marinas y tortugas carey, ideal para el turismo ecológico y paseos en lancha.</p>
+          </div>
+          <span class="card-tag">Reserva Natural</span>
+        </div>
+      </article>
+
+      <!-- 10. Centro Histórico San Salvador -->
+      <article class="card">
+        <div class="card-header">
+          <span class="card-badge">#10</span>
+          <img src="https://images.unsplash.com/photo-1579282240050-352db0a14c21?auto=format&fit=crop&w=600&q=80" alt="Centro Histórico">
+        </div>
+        <div class="card-body">
+          <div>
+            <h3 class="card-title">Centro Histórico de San Salvador</h3>
+            <p class="card-text">Corazón arquitectónico e histórico donde destacan la Catedral Metropolitana, el Palacio Nacional y el Teatro Nacional totalmente renovados.</p>
+          </div>
+          <span class="card-tag">Cultura e Historia</span>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Descubre El Salvador. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
